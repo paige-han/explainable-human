@@ -1,0 +1,9 @@
+node_modules/
+.env
+.DS_Store
+._*
+.idea/
+
+# Visitor answers are personal data — never commit them.
+app/data/*
+!app/data/.gitkeep

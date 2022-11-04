@@ -1,0 +1,78 @@
+<html>
+    <head>
+    <title>eXplainable Human</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+    </head>
+    <body>
+        <div id="start">
+            <button id="startButton">
+                <p id="buttonKo">당신의 자아를 설명하려면 엔터키를 누르십시오.</p>
+                <p id="buttonEn">Press ENTER to identify your ego.</p>
+            </button>
+        </div>
+        <video src="intro.mp4" id="startVideo"></video>
+    </body>
+    <script type="text/javascript">
+        function sleep(ms) {
+            return new Promise((r) => setTimeout(r, ms));
+        }
+        document.addEventListener("keydown", function(e) {
+            if (e.keyCode == 13) {
+                document.getElementById("startButton").click();
+                sleep(1000).then(() => startVideo());
+            }
+        })
+        function startVideo() {
+            document.getElementById("startButton").style.display = 'none';
+            document.getElementById('startVideo').style.display = 'block';
+            document.getElementById('startVideo').style.height = String(window.innerHeight)+"px";
+            document.getElementById('startVideo').play();
+            //introAudio.play();
+            sleep(13500).then(() => window.location.href="main.html");
+        }
+    </script>
+    <style>
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+        #start {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            display: flex; 
+        }
+        #startButton { 
+            background-color: rgb(0, 0, 0);
+            color: rgba(255, 255, 255, 0.676);
+            border: 1px solid rgb(255, 255, 255, 0.676);
+            padding: 1%;
+            width: 35%;
+            line-height: 12px;
+            font-family: 'Pretendard';
+            font-weight: 300;
+            text-shadow: 0 0 10px #ffffff;
+            transition: all 0.1s ease;
+            animation: blink 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes blink {
+            0% {opacity: 0.1;}
+            100% {opacity: 1;}
+        }
+        #startButton:active {
+            background-color: rgb(255, 255, 255);
+            transition: all 0.1s ease;
+        }
+        #ButtonKo {
+            font-size: 22px;
+        }
+        #ButtonEn {
+            font-size: 18px;
+        }
+        #startVideo {
+            display: none;
+        }
+    </style>
+</html>
